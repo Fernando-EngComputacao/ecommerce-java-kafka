@@ -37,7 +37,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
 ---
 ## :bookmark: Certificação
-° Certificado do Curso: **[Spring Boot 3: documente, teste e faça deploy](https://cursos.alura.com.br/certificate/ace83159-452e-4449-826d-9de824d337ee)**
+° Certificado do Curso: **[KAFKA: PRODUTORES, CONSUMIDORES E STREAMS](https://cursos.alura.com.br/certificate/b088d2b4-9882-4288-afbe-ac854ea47ca6)**
 
 ---
 
