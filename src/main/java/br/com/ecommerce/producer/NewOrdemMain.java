@@ -6,13 +6,20 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 public class NewOrdemMain {
-    public static void main (String[] args) {
+    public static void main (String[] args) throws ExecutionException, InterruptedException {
         var producer = new KafkaProducer<String, String>(properties());
         var value = "124,123,125";
         var record = new ProducerRecord<String, String>("ECOMMERCE_NEW_ORDEM", value, value);
-        producer.send(record);
+        producer.send(record, (data, ex) -> {
+            if (ex != null) {
+                ex.printStackTrace();
+                return;
+            }
+            System.out.println(data.topic() + ":::partition" + data.partition() + "/offeset " + data.offset() + "/timestamp " + data.timestamp());
+        }).get();
     }
 
     private static Properties properties () {
