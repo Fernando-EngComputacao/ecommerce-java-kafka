@@ -1,9 +1,8 @@
-package br.com.ecommerce.service;
+package br.com.ecommerce.consumer.service;
 
 import br.com.ecommerce.producer.Order;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class FraudDetectorService {

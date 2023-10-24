@@ -1,5 +1,7 @@
-package br.com.ecommerce.service;
+package br.com.ecommerce.consumer.service;
 
+import br.com.ecommerce.consumer.GsonDeserializer;
+import br.com.ecommerce.consumer.IConsumerFunction;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;

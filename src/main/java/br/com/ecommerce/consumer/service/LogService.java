@@ -1,14 +1,10 @@
-package br.com.ecommerce.service;
+package br.com.ecommerce.consumer.service;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-import java.time.Duration;
-import java.util.Collections;
 import java.util.Map;
-import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class LogService {
