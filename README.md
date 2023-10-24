@@ -1,6 +1,6 @@
 ## 💻 Sobre o projeto
 
-Ecommerce é um projeto de mensageria na linguagem Java e com uso do Kafka.
+Ecommerce é um projeto de mensageria na linguagem Java e com uso do Kafka em que há Produceres, Consumers e Streamers.
 
 ---
 
