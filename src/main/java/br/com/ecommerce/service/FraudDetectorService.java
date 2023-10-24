@@ -1,16 +1,28 @@
 package br.com.ecommerce.service;
 
+import br.com.ecommerce.producer.Order;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FraudDetectorService {
     public static void main(String[] args) {
         var detectorService = new FraudDetectorService();
-        try (var service = new KafkaService(EmailService.class.getSimpleName(),"ECOMMERCE_NEW_ORDEM", detectorService::parse)){
+        try (
+                var service = new KafkaService<>(
+                        EmailService.class.getSimpleName(),
+                        "ECOMMERCE_NEW_ORDEM",
+                        detectorService::parse,
+                        Order.class,
+                        Map.of()
+                )
+        ){
             service.run();
         }
     }
 
-    private void parse(ConsumerRecord<String, String> record) {
+    private void parse(ConsumerRecord<String, Order> record) {
             System.out.println("\n-------------------------------------------");
             System.out.println("Processing new order, checking for fraud");
             System.out.println(record.key());

@@ -1,18 +1,19 @@
 package br.com.ecommerce.service;
 
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.serialization.StringDeserializer;
 
-import java.time.Duration;
-import java.util.Collections;
-import java.util.Properties;
+import java.util.Map;
 
 public class EmailService {
     public static void main(String[] args) {
         var emailService = new EmailService();
-        var service = new KafkaService(EmailService.class.getSimpleName(), "ECOMMERCE_SEND_EMAIL", emailService::parse);
+        var service = new KafkaService(
+                EmailService.class.getSimpleName(),
+                "ECOMMERCE_SEND_EMAIL",
+                emailService::parse,
+                String.class,
+                Map.of()
+        );
         service.run();
     }
 

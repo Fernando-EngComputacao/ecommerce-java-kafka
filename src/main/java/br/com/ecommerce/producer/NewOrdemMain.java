@@ -1,27 +1,23 @@
 package br.com.ecommerce.producer;
 
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.serialization.StringSerializer;
-
-import java.util.Properties;
+import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class NewOrdemMain {
     public static void main (String[] args) throws ExecutionException, InterruptedException {
-        try(var dispatcher = new KafkaDispatcher()) {
+        try(var orderDispatcher = new KafkaDispatcher<Order>()) {
+            try (var emailDispatcher = new KafkaDispatcher<Email>()) {
+                var userId = UUID.randomUUID().toString();
+                var orderId = UUID.randomUUID().toString();
+                var amout = new BigDecimal(Math.random() * 5000 + 1);
 
+                var order = new Order(userId, orderId, amout);
+                orderDispatcher.send("ECOMMERCE_NEW_ORDEM", userId, order);
 
-            var key = UUID.randomUUID().toString();
-
-            var value = key + "124,123,125";
-            dispatcher.send("ECOMMERCE_NEW_ORDEM", key, value);
-
-            var email = "Welcome! We're processing your email address";
-            dispatcher.send("ECOMMERCE_SEND_EMAIL", key, email);
+                var email = new Email("fernando.furtadocarrilho@gmail.com", "My Email");
+                emailDispatcher.send("ECOMMERCE_SEND_EMAIL", userId, email);
+            }
         }
     }
 
