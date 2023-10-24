@@ -6,6 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="service-log" />
+        <module name="commom-kafka" />
+        <module name="service-fraud-dectector" />
+        <module name="service-new-order" />
+        <module name="service-email" />
       </profile>
     </annotationProcessing>
   </component>

@@ -11,6 +11,10 @@
     <modules>
         <module>service-email</module>
         <module>service-email</module>
+        <module>service-fraud-dectector</module>
+        <module>service-log</module>
+        <module>service-new-order</module>
+        <module>commom-kafka</module>
     </modules>
 
     <parent>
